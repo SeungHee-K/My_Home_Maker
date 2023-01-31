@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// ¶¥¿¡ ¼³Ä¡¹°ÀÌ Ãß°¡µÉ¶§
-// Æ÷È­µµ Áõ°¡
+// ë•…ì— ì„¤ì¹˜ë¬¼ì´ ì¶”ê°€ë ë•Œ
+// í¬í™”ë„ ì¦ê°€
 
-// ¼³Ä¡¹° »èÁ¦ ½Ã
-// Æ÷È­µµ °¨¼Ò
+// ì„¤ì¹˜ë¬¼ ì‚­ì œ ì‹œ
+// í¬í™”ë„ ê°ì†Œ
 
-// ÀÚµ¿ »ı¼ºµÇ´Â Ç®/µ¹/°¡Áö Á¦¿Ü
+// ìë™ ìƒì„±ë˜ëŠ” í’€/ëŒ/ê°€ì§€ ì œì™¸
 
 public class Floor : MonoBehaviour
 {
@@ -35,17 +35,8 @@ public class Floor : MonoBehaviour
     }
 
 
+    void Start() {}
 
-    void Start()
-    {
-        
-        
-    }
-
-    void Update()
-    {
-               
-        
-
-    }
+    void Update() {}
+    
 }
