@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-// ¿ÀºêÁ§Æ® ¹èÄ¡ ÆíÁı
-// ¿ÀºêÁ§Æ® ¼±ÅÃ (Å¬¸¯)
-// È¸Àü (90µµ)
-//
+// í¸ì§‘ëª¨ë“œ
+// ì˜¤ë¸Œì íŠ¸ ì„ íƒ (í´ë¦­)
+// íšŒì „ (90ë„)
+// ì´ë™ (ë§ˆìš°ìŠ¤ ì¢Œí‘œ/í´ë¦­)
+// ì‚­ì œ
 
 public class Modify_Manager : MonoBehaviour
 {
@@ -23,13 +24,12 @@ public class Modify_Manager : MonoBehaviour
     private bool isMove;
     private int RotateNum = 90;
 
-    // ½ºÅ©¸³Æ®
+    // ìŠ¤í¬ë¦½íŠ¸
     public UI_Manager ui_manager;
     public Floor floor;
     public House house;
     public Player player;
     public EFM_Manager EFM_M;
-
 
 
     void Start()
@@ -58,15 +58,14 @@ public class Modify_Manager : MonoBehaviour
             Modify_bool = false;
         }
 
-
-        if (Modify_bool && ui_manager.Mode[1].activeSelf && Select_OBJ == null) // ¼öÁ¤¸ğµåÀÏ¶§
+        if (Modify_bool && ui_manager.Mode[1].activeSelf && Select_OBJ == null) // ìˆ˜ì •ëª¨ë“œì¼ë•Œ
         {
             if (Input.GetMouseButtonDown(0) && !isPointerOverUIobj())
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit = new RaycastHit();
 
-                if (Physics.Raycast(ray, out hit)) // ¼öÁ¤ÇÒ ¿ÀºêÁ§Æ® ¼±ÅÃ
+                if (Physics.Raycast(ray, out hit)) // ìˆ˜ì •í•  ì˜¤ë¸Œì íŠ¸ ì„ íƒ
                 {
                     if (hit.collider.gameObject.tag == "tree" || hit.collider.gameObject.tag == "fence" || hit.collider.gameObject.tag == "building" || hit.collider.gameObject.tag == "animal" || hit.collider.gameObject.tag == "interior" || hit.collider.gameObject.tag == "props")
                     {
@@ -84,9 +83,9 @@ public class Modify_Manager : MonoBehaviour
             }
         }
 
-        if (!Modify_bool) // ÆíÁı¸ğµå ¾Æ´Ò¶§ ¸ğµç ¼³Ä¡¹° ¼±ÅÃÇ¥½Ã(»¡°£»ö) ºñÈ°¼ºÈ­
+        if (!Modify_bool) // í¸ì§‘ëª¨ë“œ ì•„ë‹ë•Œ ëª¨ë“  ì„¤ì¹˜ë¬¼ ì„ íƒí‘œì‹œ(ë¹¨ê°„ìƒ‰) ë¹„í™œì„±í™”
         {
-            if (SceneManager.GetActiveScene().name == "Main") // ¿ÜºÎÀÏ °æ¿ì
+            if (SceneManager.GetActiveScene().name == "Main") // ì™¸ë¶€ì¼ ê²½ìš°
             {
                 for (int i = 0; i < floor.Obj_count; i++)
                 {
@@ -97,11 +96,11 @@ public class Modify_Manager : MonoBehaviour
                 }
             }
 
-            if (SceneManager.GetActiveScene().name == "House") // ½Ç³»ÀÏ °æ¿ì
+            if (SceneManager.GetActiveScene().name == "House") // ì‹¤ë‚´ì¼ ê²½ìš°
             {
                 for (int i = 0; i < house.Obj_count; i++)
                 {
-                    if (house.Obj[i].transform.childCount == 0) continue; // ÀÚ½ÄÀÌ ¾ø´Ù¸é ¾Æ·¡ ÄÚµå ½ÇÇàx
+                    if (house.Obj[i].transform.childCount == 0) continue; // ìì‹ì´ ì—†ë‹¤ë©´ ì•„ë˜ ì½”ë“œ ì‹¤í–‰x
 
                     if (house.Obj[i].transform.GetChild(0).gameObject.activeSelf)
                     {
@@ -111,7 +110,7 @@ public class Modify_Manager : MonoBehaviour
             }
         }
 
-        if (isMove) // move ½ÇÇàÁßÀÏ¶§
+        if (isMove) // move ì‹¤í–‰ì¤‘ì¼ë•Œ
         {
             if (Select_OBJ != null)
             {
@@ -127,12 +126,12 @@ public class Modify_Manager : MonoBehaviour
                         Modify_Pos = hit.point;
                         Select_OBJ.GetComponent<Transform>().position = Modify_Pos;
 
-                        EFM_M.audioSource.PlayOneShot(EFM_M.EFM[3]); // ÆíÁı ¼Ò¸®
+                        EFM_M.audioSource.PlayOneShot(EFM_M.EFM[3]); // í¸ì§‘ ì†Œë¦¬
                         player.P_Ani.SetTrigger("Make");
 
-                        Select_OBJ.transform.GetChild(0).gameObject.SetActive(false);
-                        
+                        Select_OBJ.transform.GetChild(0).gameObject.SetActive(false);                        
                     }
+                    
                     Select_OBJ = null;
                     isMove = false;
                 }
@@ -142,19 +141,23 @@ public class Modify_Manager : MonoBehaviour
 
     private void Modify()
     {
+        Debug.log("í¸ì§‘ëª¨ë“œ ON");
+        
         ModifyTool.SetActive(true);
         Modify_bool = true;
     }
 
     private void Modify_Exit()
     {
+        Debug.log("í¸ì§‘ëª¨ë“œ OFF");
+    
         ui_manager.Btn_xx();
         ui_manager.Mode[1].SetActive(false);
         ModifyTool.SetActive(false);
         Modify_bool = false;
     }
 
-    public void Move() // ¿ÀºêÁ§Æ® ÀÌµ¿
+    public void Move() // ì˜¤ë¸Œì íŠ¸ ì´ë™
     {
         if (Select_OBJ != null)
         {
@@ -162,24 +165,23 @@ public class Modify_Manager : MonoBehaviour
         }
     }
 
-    public void Rotate() // ¿ÀºêÁ§Æ® È¸Àü
+    public void Rotate() // ì˜¤ë¸Œì íŠ¸ íšŒì „
     {
-
         Select_OBJ.transform.Rotate(0f, Select_OBJ.transform.rotation.y + RotateNum, 0f);
 
         Select_OBJ.transform.GetChild(0).gameObject.SetActive(false);
 
-        EFM_M.audioSource.PlayOneShot(EFM_M.EFM[3]); // ÆíÁı ¼Ò¸®
+        EFM_M.audioSource.PlayOneShot(EFM_M.EFM[3]); // í¸ì§‘ ì†Œë¦¬
         player.P_Ani.SetTrigger("Make");
 
         Select_OBJ = null;
     }
 
-    public void Destroy() // ¿ÀºêÁ§Æ® »èÁ¦
+    public void Destroy() // ì˜¤ë¸Œì íŠ¸ ì‚­ì œ
     {
         Select_OBJ.transform.GetChild(0).gameObject.SetActive(false);
 
-        EFM_M.audioSource.PlayOneShot(EFM_M.EFM[3]); // ÆíÁı ¼Ò¸®
+        EFM_M.audioSource.PlayOneShot(EFM_M.EFM[3]); // í¸ì§‘ ì†Œë¦¬
         player.P_Ani.SetTrigger("Make");
 
         Destroy(Select_OBJ, 0.2f);
@@ -191,7 +193,7 @@ public class Modify_Manager : MonoBehaviour
 
     private bool isPointerOverUIobj()
     {
-        // UI Å¬¸¯ ½Ã ´Ù¸¥ Å¬¸¯ÀÌº¥Æ® µ¿ÀÛX
+        // UI í´ë¦­ ì‹œ ë‹¤ë¥¸ í´ë¦­ì´ë²¤íŠ¸ ë™ì‘X
 
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
 
@@ -202,7 +204,5 @@ public class Modify_Manager : MonoBehaviour
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
 
         return results.Count > 0;
-
     }
-
 }
