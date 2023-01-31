@@ -2,16 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Ä¸ÃÄ¸ðµå Ä«¸Þ¶ó È¸Àü
+// ìº¡ì³ëª¨ë“œ ì¹´ë©”ë¼ íšŒì „
 
 public class CamRotate : MonoBehaviour
 {
     public float Speed = 10;
 
-    void Start()
-    {
-
-    }
+    void Start() {}
 
     void Update()
     {
@@ -20,12 +17,12 @@ public class CamRotate : MonoBehaviour
 
     public void Cam_Rotate()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1)) // ë§ˆìš°ìŠ¤ ìš°í´ë¦­ ì‹œ ì¹´ë©”ë¼ ê°ë„ ë³€ê²½
         {
-            Vector3 rot = transform.rotation.eulerAngles; // ÇöÀç Ä«¸Þ¶ó °¢µµ
-            rot.y += Input.GetAxis("Mouse X") * Speed; // ¸¶¿ì½º x À§Ä¡ * È¸Àü ½ºÇÇµå
-            rot.x += -1 * Input.GetAxis("Mouse Y") * Speed; // ¸¶¿ì½º y À§Ä¡ * È¸Àü ½ºÇÇµå
-            Quaternion q = Quaternion.Euler(rot); // Ä«¸Þ¶ó °¢µµ vector => quaternion º¯È¯
+            Vector3 rot = transform.rotation.eulerAngles; // í˜„ìž¬ ì¹´ë©”ë¼ ê°ë„
+            rot.y += Input.GetAxis("Mouse X") * Speed; // ë§ˆìš°ìŠ¤ x ìœ„ì¹˜ * íšŒì „ ìŠ¤í”¼ë“œ
+            rot.x += -1 * Input.GetAxis("Mouse Y") * Speed; // ë§ˆìš°ìŠ¤ y ìœ„ì¹˜ * íšŒì „ ìŠ¤í”¼ë“œ
+            Quaternion q = Quaternion.Euler(rot); // ì¹´ë©”ë¼ ê°ë„ vector => quaternion ë³€í™˜
             q.z = 0;
             transform.rotation = Quaternion.Slerp(transform.rotation, q, 2f);
         }
