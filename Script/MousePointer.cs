@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Ä¿¼­ ÀÌ¹ÌÁö ¹Ù²Ù±â
+// ë§ˆìš°ìŠ¤ ì»¤ì„œ ì´ë¯¸ì§€ ë°”ê¾¸ê¸°
 
 public class MousePointer : MonoBehaviour
 {
@@ -13,17 +13,13 @@ public class MousePointer : MonoBehaviour
 
     public UI_Manager ui_manager;
 
-    void Start()
-    {
-
-    }
+    void Start() {}
 
     void Update()
     {
         ui_manager = GameObject.FindObjectOfType<UI_Manager>();
 
-
-        if (ui_manager.Mode[0].activeSelf || ui_manager.Mode[1].activeSelf) // ¼³Ä¡ + ÆíÁı¸ğµåÀÏ¶§
+        if (ui_manager.Mode[0].activeSelf || ui_manager.Mode[1].activeSelf) // ì„¤ì¹˜ + í¸ì§‘ëª¨ë“œì¼ë•Œ
         {
             ChangeMouse_B();
         }
@@ -34,14 +30,13 @@ public class MousePointer : MonoBehaviour
         }        
     }
 
-    public void ChangeMouse_A() // È­»ìÇ¥
+    public void ChangeMouse_A() // í™”ì‚´í‘œ
     {
         Cursor.SetCursor(cursorTexture_A, mousePos, cursorMode);
     }
 
-    public void ChangeMouse_B() // ¸ÁÄ¡
+    public void ChangeMouse_B() // ë§ì¹˜
     {
         Cursor.SetCursor(cursorTexture_B, mousePos, cursorMode);
     }
-
 }
