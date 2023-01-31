@@ -6,19 +6,15 @@ using UnityEngine.UI;
 public class CamZoom : MonoBehaviour
 {
     public float Speed = 10f;
-    public GameObject Cam_frame; // Ä«¸Ş¶ó ¹èÀ²
-    public Text CamText;
+    public GameObject Cam_frame; // ìº¡ì³ëª¨ë“œ í”„ë ˆì„ ì˜¤ë¸Œì íŠ¸
+    public Text CamText; // ì¹´ë©”ë¼ ë°°ìœ¨
 
-    // ½ºÅ©¸³Æ®
+    // ìŠ¤í¬ë¦½íŠ¸
     UI_Manager uI_Manager;
     Player player;
 
 
-    void Start()
-    {
-
-
-    }
+    void Start() {}
 
     void Update()
     {
@@ -41,13 +37,11 @@ public class CamZoom : MonoBehaviour
     }
 
     private void M_CameraZoom()
-    {        
-
+    {      
         float scroll = Input.GetAxis("Mouse ScrollWheel") * -Speed;
-        //                            ¤¤¸¶¿ì½º ½ºÅ©·Ñ °ª
+        //                            ã„´ë§ˆìš°ìŠ¤ ìŠ¤í¬ë¡¤ ê°’
 
-
-        // Ä«¸Ş¶ó È®´ë/Ãà¼Ò ÇÒ ¼ö ÀÖ´Â ¹üÀ§ 20 ~ 60 »çÀÌ ½ºÅ©·Ñ °ª
+        // ì¹´ë©”ë¼ í™•ëŒ€/ì¶•ì†Œ í•  ìˆ˜ ìˆëŠ” ë²”ìœ„ 20 ~ 60 ì‚¬ì´ ìŠ¤í¬ë¡¤ ê°’
 
         if (Camera.main.fieldOfView <= 20f && scroll < 0)
         {
@@ -65,17 +59,15 @@ public class CamZoom : MonoBehaviour
         }
 
         CamText.text = "x " + Camera.main.fieldOfView.ToString();
-
     }
 
     private void P_CamZoom()
     {
         Camera p_cam = player.P_Cam.GetComponent<Camera>();
         float scroll = Input.GetAxis("Mouse ScrollWheel") * -Speed;
-        //                            ¤¤¸¶¿ì½º ½ºÅ©·Ñ °ª
+        //                            ã„´ë§ˆìš°ìŠ¤ ìŠ¤í¬ë¡¤ ê°’
 
-
-        // Ä«¸Ş¶ó È®´ë/Ãà¼Ò ÇÒ ¼ö ÀÖ´Â ¹üÀ§ 20 ~ 60 »çÀÌ ½ºÅ©·Ñ °ª
+        // ì¹´ë©”ë¼ í™•ëŒ€/ì¶•ì†Œ í•  ìˆ˜ ìˆëŠ” ë²”ìœ„ 20 ~ 60 ì‚¬ì´ ìŠ¤í¬ë¡¤ ê°’
 
         if (p_cam.fieldOfView <= 20f && scroll < 0)
         {
