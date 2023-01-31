@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// È¿°úÀ½ (°ø°İ/¾ÀÀüÈ¯/¼³Ä¡/ÆíÁı/¾ÆÀÌÅÛ)
-// - ÇÃ·¹ÀÌ¾î ±Í¼Ó
+// íš¨ê³¼ìŒ (ê³µê²©/ì”¬ì „í™˜/ì„¤ì¹˜/í¸ì§‘/ì•„ì´í…œ)
+// - í”Œë ˆì´ì–´ ê·€ì†
 
 public class EFM_Manager : MonoBehaviour
 {
     public AudioSource audioSource;
-    public AudioClip[] EFM;
-
-
+    public AudioClip[] EFM; // ì´í™íŠ¸ ì‚¬ìš´ë“œ
 
 
     void Start()
@@ -18,8 +16,6 @@ public class EFM_Manager : MonoBehaviour
         audioSource = this.GetComponent<AudioSource>();
     }
 
-    void Update()
-    {
-        
-    }
+    void Update() {}
+    
 }
