@@ -4,11 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 
-// ¸ó½ºÅÍ
-// AI (Idle - Walk - Jump - Attack - Damage ) ½Ã°£ ¼³Á¤
-// ¸ó½ºÅÍ À§Ä¡ ±âÁØ (-15 ~ 15) ÀÌ³» ÇÃ·¹ÀÌ¾î Á¢±Ù ½Ã ´À³¦Ç¥UI, ÇÃ·¹ÀÌ¾î ÇâÇØ ´Ù°¡¿À±â
-// ¸ó½ºÅÍ °ø°İ or ¹ŞÀ»¶§ µ¥¹ÌÁö text Ãâ·Â
-// 
+// ëª¬ìŠ¤í„° ì •ë³´ (HP Coin Speed ATK)
+// Animation (Idle - Walk - Jump - Attack - Damage - Die)
+// ëª¬ìŠ¤í„° ìœ„ì¹˜ ê¸°ì¤€ (-15 ~ 15) ì´ë‚´ í”Œë ˆì´ì–´ ì ‘ê·¼ ì‹œ ëŠë‚Œí‘œUI, í”Œë ˆì´ì–´ í–¥í•´ ë‹¤ê°€ì˜¤ê¸°
 
 public class Monster : MonoBehaviour
 {
@@ -33,7 +31,7 @@ public class Monster : MonoBehaviour
     public GameObject Find;
     public Text Damage_text;
         
-    // ½ºÅ©¸³Æ®
+    // ìŠ¤í¬ë¦½íŠ¸
     public UI_Manager ui_Manager;
     public Player player;
     public Monster_Manager monster_manager;
@@ -49,7 +47,6 @@ public class Monster : MonoBehaviour
         monster_manager = GameObject.FindObjectOfType<Monster_Manager>();
         M_Ani = this.GetComponent<Animator>();
         EFM_M = GameObject.FindObjectOfType<EFM_Manager>();
-
 
         HP = Random.Range(15, 30);
         Coin = Random.Range(100, 300);
@@ -102,7 +99,6 @@ public class Monster : MonoBehaviour
                 Vector3 move = this.transform.forward * Speed * Time.deltaTime;
                 M_Rigid.MovePosition(M_Rigid.position + move);
 
-
                 if (Vector3.Distance(destination, transform.position) <= 0.5f || time >= 20)
                 {
                     M_Ani.SetBool("Walk", false);
@@ -134,7 +130,7 @@ public class Monster : MonoBehaviour
         time += Time.deltaTime;
     }
 
-    private void OnCollisionStay(Collision collision) // ¸ó½ºÅÍ°¡ ÇÃ·¹ÀÌ¾î ÀÌ¿Ü ±¸Á¶¹°¿¡ ºÎµúÈú °æ¿ì Ãæµ¹¹«½Ã
+    private void OnCollisionStay(Collision collision) // ëª¬ìŠ¤í„°ê°€ í”Œë ˆì´ì–´ ì´ì™¸ êµ¬ì¡°ë¬¼ì— ë¶€ë”ªí ê²½ìš° ì¶©ëŒë¬´ì‹œ
     {      
         if (collision.gameObject.tag == " Ground" && collision.gameObject.tag == "Building")
         {
@@ -148,7 +144,7 @@ public class Monster : MonoBehaviour
 
         if (collision.gameObject.tag == "tree" || collision.gameObject.tag == "animal" || collision.gameObject.tag == "fence" || collision.gameObject.tag == "building" || collision.gameObject.tag == "interior" || collision.gameObject.tag == "Props")
         {
-            Debug.Log("Ãæµ¹¹«½Ã");
+            Debug.Log("ì¶©ëŒë¬´ì‹œ");
             return;
         }
     }    
@@ -185,10 +181,10 @@ public class Monster : MonoBehaviour
     {
         M_Effect[0].Play();
         Destroy(this.gameObject, 0.4f);
-        EFM_M.audioSource.PlayOneShot(EFM_M.EFM[5]); // ¸ó½ºÅÍ »ç¶óÁö´Â ¼Ò¸®
+        EFM_M.audioSource.PlayOneShot(EFM_M.EFM[5]); // ëª¬ìŠ¤í„° ì‚¬ë¼ì§€ëŠ” ì†Œë¦¬
         player.Coin += Coin;
 
-        Debug.Log("ÄÚÀÎÁõ°¡! : " + player.Coin);
+        Debug.Log("ì½”ì¸ì¦ê°€! : " + player.Coin);
     }
 
     private void TargetFind()
