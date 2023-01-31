@@ -36,7 +36,7 @@ public class CamZoom : MonoBehaviour
 
     }
 
-    private void M_CameraZoom()
+    private void M_CameraZoom() // 캡쳐모드 아닐 때, 메인카메라 줌 인/아웃
     {      
         float scroll = Input.GetAxis("Mouse ScrollWheel") * -Speed;
         //                            ㄴ마우스 스크롤 값
@@ -61,14 +61,11 @@ public class CamZoom : MonoBehaviour
         CamText.text = "x " + Camera.main.fieldOfView.ToString();
     }
 
-    private void P_CamZoom()
+    private void P_CamZoom() // 캡쳐모드일 때, 플레이어 카메라 줌 인/아웃
     {
         Camera p_cam = player.P_Cam.GetComponent<Camera>();
         float scroll = Input.GetAxis("Mouse ScrollWheel") * -Speed;
-        //                            ㄴ마우스 스크롤 값
-
-        // 카메라 확대/축소 할 수 있는 범위 20 ~ 60 사이 스크롤 값
-
+    
         if (p_cam.fieldOfView <= 20f && scroll < 0)
         {
             p_cam.fieldOfView = 20f;
