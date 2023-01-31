@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// ·£´ı ¾ÆÀÌÅÛ / ±¸Á¶¹° »ı¼º
-
+// ë§ˆë‹¹ ë§µ
+// ëœë¤ ì•„ì´í…œ/êµ¬ì¡°ë¬¼ ìƒì„±
 
 public class Item_Manager : MonoBehaviour
 {
@@ -11,17 +11,17 @@ public class Item_Manager : MonoBehaviour
 
     public Transform ItemArea_Pos;
 
-    private int minItem = 0; // ¾ÆÀÌÅÛ °¹¼ö 0
-    private int maxItem = 10; // ¾ÆÀÌÅÛ ÃÖ´ë »ı¼º °¹¼ö
-    public float betTime; // »ı¼ºÁÖ±â
-    private float minTime = 10f; // ÃÖ¼Ò ½Ã°£ °£°İ (1ºĞ)
-    private float maxTime = 30f; // ÃÖ´ë ½Ã°£ °£°İ (3ºĞ)
-    public float lastTime; // ¸¶Áö¸· »ı¼º½ÃÁ¡
+    private int minItem = 0; // ì•„ì´í…œ ê°¯ìˆ˜ 0
+    private int maxItem = 10; // ì•„ì´í…œ ìµœëŒ€ ìƒì„± ê°¯ìˆ˜
+    public float betTime; // ìƒì„±ì£¼ê¸°
+    private float minTime = 10f; // ìµœì†Œ ì‹œê°„ ê°„ê²© (1ë¶„)
+    private float maxTime = 30f; // ìµœëŒ€ ì‹œê°„ ê°„ê²© (3ë¶„)
+    public float lastTime; // ë§ˆì§€ë§‰ ìƒì„±ì‹œì 
 
     public List<GameObject> itemList = new List<GameObject>();
     private float itemCount;
 
-    // ½ºÅ©¸³Æ®
+    // ìŠ¤í¬ë¦½íŠ¸
     public P_Item p_item;
     public Player player;
     public EFM_Manager EFM_M;
@@ -63,21 +63,18 @@ public class Item_Manager : MonoBehaviour
             GameObject Item = Instantiate(item[itemNum], new Vector3(ItemArea_Pos.position.x + randomX, ItemArea_Pos.position.y + 1, ItemArea_Pos.position.z + randomZ), Quaternion.identity);
 
             itemList.Add(Item);
-
         }     
         
     }
 
     public void Garbage_x(string Delete)
     {
-        if (Delete == "»èÁ¦")
+        if (Delete == "ì‚­ì œ")
         {
             itemList.Remove(p_item.XX_item);
             player.P_Ani.SetTrigger("Make");
-            EFM_M.audioSource.PlayOneShot(EFM_M.EFM[3]); // ÆíÁı ¼Ò¸®
+            EFM_M.audioSource.PlayOneShot(EFM_M.EFM[3]); // í¸ì§‘ ì†Œë¦¬
             Destroy(p_item.XX_item, 0.2f);
         }
     }
-
-
 }
