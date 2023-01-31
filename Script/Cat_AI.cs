@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 고양이 오브젝트 AI
+// 일정 시간마다 애니메이션 반복
+
 public class Cat_AI : MonoBehaviour
 {
     private Animator cat_ani;
@@ -9,8 +12,6 @@ public class Cat_AI : MonoBehaviour
     public float time;
     private float minTime = 0f;
     private float maxTime = 60f;
-
-
 
 
     void Start()
@@ -23,7 +24,7 @@ public class Cat_AI : MonoBehaviour
     }
 
     void Update()
-    {
+    {         
         if (Time.deltaTime >= time)
         {
             cat_idle();
@@ -33,8 +34,6 @@ public class Cat_AI : MonoBehaviour
         {
             cat_move();            
         }
-
-
     }
 
     private void cat_move()
@@ -45,7 +44,6 @@ public class Cat_AI : MonoBehaviour
         {
             cat_ani.SetBool("Move", false);                        
         }
-
     }
 
     private void cat_idle()
@@ -56,6 +54,5 @@ public class Cat_AI : MonoBehaviour
         {
             cat_ani.SetBool("Rotate", false);
         }
-
     }
 }
