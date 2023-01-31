@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// Áı ¾È¿¡ ¼³Ä¡µÈ ±¸Á¶¹° = Æ÷È­µµ
+// ì§‘ ì•ˆì— ì„¤ì¹˜ëœ êµ¬ì¡°ë¬¼ = í¬í™”ë„ ì¦/ê°
 
 public class House : MonoBehaviour
 {
@@ -15,10 +15,7 @@ public class House : MonoBehaviour
         Find();
     }
 
-    void Update()
-    {
-
-    }
+    void Update() {}
 
     public void Find()
     {
@@ -52,5 +49,4 @@ public class House : MonoBehaviour
 
         Obj_count = Obj.Count;
     }
-
 }
