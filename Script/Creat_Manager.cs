@@ -3,32 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// ¼±ÅÃÇÑ ¿ÀºêÁ§Æ® »ı¼º
-// ¼³Ä¡¸ğµåÀÏ¶§ Å¬¸¯ÇÑ À§Ä¡
+// ì„¤ì¹˜ëª©ë¡ì—ì„œ ì„ íƒí•œ ì˜¤ë¸Œì íŠ¸ë¥¼
+// ì„¤ì¹˜ëª¨ë“œì¼ë•Œ í´ë¦­í•œ ë§ˆìš°ìŠ¤ ì¢Œí‘œ ê°’ì— ì˜¤ë¸Œì íŠ¸ ìƒì„±
 
 public class Creat_Manager : MonoBehaviour
 {
-    public GameObject[] Creat_tree;
-    public GameObject[] Creat_fence;
-    public GameObject[] Creat_animal;
-    public GameObject[] Creat_building;
+    public GameObject[] Creat_tree; // ë‚˜ë¬´
+    public GameObject[] Creat_fence; // ìš¸íƒ€ë¦¬
+    public GameObject[] Creat_animal; // ë™ë¬¼
+    public GameObject[] Creat_building; // ê±´ë¬¼
 
-    public Material[] Creat_interior;
-    public GameObject[] Creat_furniture;
-    public GameObject[] Creat_props;
-    public GameObject[] Creat_Crops;
+    public Material[] Creat_interior; // ì¸í…Œë¦¬ì–´ ì¬ì§ˆ
+    public GameObject[] Creat_furniture; // ê°€êµ¬
+    public GameObject[] Creat_props; // ì†Œí’ˆ
+    public GameObject[] Creat_Crops; // ë†ì‘ë¬¼
 
-    public GameObject[] Wall;
-    public GameObject Floor;
+    public GameObject[] Wall; // ë²½ì²´
+    public GameObject Floor; // ë°”ë‹¥
     public GameObject Coin_X;
 
     public GameObject Creat_OBJ;
     private Vector3 Creat_Pos;
     public AudioSource Creat_Audio;
 
-    public GameObject[] Btn;
+    public GameObject[] Btn; // ë©”ë‰´ ë²„íŠ¼
 
-    // ½ºÅ©¸³Æ®
+    // ìŠ¤í¬ë¦½íŠ¸
     public UI_Manager ui_manager;
     public Player player;
     public EFM_Manager EFM_M;
@@ -43,7 +43,6 @@ public class Creat_Manager : MonoBehaviour
 
         Creat_Audio = this.GetComponent<AudioSource>();
         Creat_bool = false;
-
     }
 
     void Update()
@@ -64,7 +63,7 @@ public class Creat_Manager : MonoBehaviour
                             Creat_Pos = hit.point;
 
                             Instantiate(Creat_OBJ, Creat_Pos, Quaternion.identity);
-                            EFM_M.audioSource.PlayOneShot(EFM_M.EFM[2]); // ¼³Ä¡ ¼Ò¸®
+                            EFM_M.audioSource.PlayOneShot(EFM_M.EFM[2]); // ì„¤ì¹˜ ì†Œë¦¬
                             player.P_Ani.SetTrigger("Make");
 
                             Creat_OBJ.transform.GetChild(0).gameObject.SetActive(false);                                                        
@@ -94,7 +93,7 @@ public class Creat_Manager : MonoBehaviour
         }
     }
 
-    public void Creat_Tree(string name)
+    public void Creat_Tree(string name) // ë‚˜ë¬´
     {
         if (name == "Tree1")
         {
@@ -139,7 +138,7 @@ public class Creat_Manager : MonoBehaviour
         Creat();
     }
 
-    public void Creat_Fence(string name)
+    public void Creat_Fence(string name) // ìš¸íƒ€ë¦¬
     {
         if (name == "fence1")
         {
@@ -164,7 +163,7 @@ public class Creat_Manager : MonoBehaviour
         Creat();
     }
 
-    public void Creat_Animal(string name)
+    public void Creat_Animal(string name) // ë™ë¬¼
     {
         if (name == "Sheep")
         {
@@ -189,7 +188,7 @@ public class Creat_Manager : MonoBehaviour
         Creat();
     }
 
-    public void Creat_Building(string name)
+    public void Creat_Building(string name) // ê±´ë¬¼
     {
         if (name == "House1")
         {
@@ -235,7 +234,7 @@ public class Creat_Manager : MonoBehaviour
         Creat();
     }
 
-    public void Creat_Interior_wall(Material mat) // º® ÀçÁú º¯°æ
+    public void Creat_Interior_wall(Material mat) // ë²½ ì¬ì§ˆ ë³€ê²½
     {               
         for (int i = 0; i < Wall.Length; i++)
         {
@@ -243,12 +242,12 @@ public class Creat_Manager : MonoBehaviour
         }                
     }
 
-    public void Creat_Interior_floor(Material mat) // ¹Ù´Ú ÀçÁú º¯°æ
+    public void Creat_Interior_floor(Material mat) // ë°”ë‹¥ ì¬ì§ˆ ë³€ê²½
     {
         Floor.GetComponent<MeshRenderer>().material = mat;
     }
 
-    public void Creat_Furniture(string name)
+    public void Creat_Furniture(string name) // ê°€êµ¬
     {
         if (name == "Bed")
         {
@@ -293,7 +292,7 @@ public class Creat_Manager : MonoBehaviour
         Creat();
     }
 
-    public void Creat_Props(string name)
+    public void Creat_Props(string name) // ì†Œí’ˆ
     {
         if (name == "Cat")
         {
@@ -323,7 +322,7 @@ public class Creat_Manager : MonoBehaviour
         Creat();
     }
 
-    public void Creat_Crop(string name)
+    public void Creat_Crop(string name) // ë†ì‘ë¬¼
     {
         if (name == "Tomato")
         {
@@ -371,7 +370,7 @@ public class Creat_Manager : MonoBehaviour
 
     private void Creat()
     {
-        Debug.Log("¼³Ä¡¸ğµå");
+        Debug.Log("ì„¤ì¹˜ëª¨ë“œ ON");
 
         for (int i = 0; i < Btn.Length; i++)
         {
@@ -385,6 +384,8 @@ public class Creat_Manager : MonoBehaviour
 
     private void Creat_Exit()
     {
+        Debug.Log("ì„¤ì¹˜ëª¨ë“œ OFF");
+    
         player.Coin -= 100;
         ui_manager.Mode[0].SetActive(false);
         Creat_bool = false;
