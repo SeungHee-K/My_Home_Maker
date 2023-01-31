@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// ÇÃ·¹ÀÌ¾î µû¶ó¿À´Â Ä«¸Ş¶ó
+// ë©”ì¸ ì¹´ë©”ë¼ í”Œë ˆì´ì–´ ì¶”ì 
+
 public class FollowCam : MonoBehaviour
 {
     public Transform Target;
-
     Vector3 Cam_Pos;
 
 
@@ -14,12 +14,10 @@ public class FollowCam : MonoBehaviour
     {
         Target = GameObject.FindGameObjectWithTag("Player").transform;
         Cam_Pos = this.transform.position - Target.transform.position;
-
     }
 
     void Update()
     {
         this.transform.position = Target.transform.position + Cam_Pos;
-
     }
 }
