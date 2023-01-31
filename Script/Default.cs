@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// ¾À ÀüÈ¯ ½Ã À¯ÁöµÉ °Í
-// 1. ÇÃ·¹ÀÌ¾î Á¤º¸(HP/ST/COIN µî)
-// 2. UI_Manager µ¥ÀÌÅÍ °øÀ¯
+// ì”¬ ì „í™˜ ì‹œ ìœ ì§€ë  ê²ƒ
+// 1. í”Œë ˆì´ì–´ ì •ë³´(HP/ST/COIN ë“±)
+// 2. UI_Manager ë°ì´í„° ê³µìœ 
 
 public class Default : MonoBehaviour
 {
@@ -13,6 +13,7 @@ public class Default : MonoBehaviour
     public GameObject SoundManager;
     public GameObject SettingPanel;
     
+    // ìŠ¤í¬ë¦½íŠ¸
     public  UI_Manager UI;
     public  P_Move p_move;
     public  Player player;
@@ -31,10 +32,7 @@ public class Default : MonoBehaviour
         EFM_manager = GameObject.FindObjectOfType<EFM_Manager>();
     }
 
-    void Start()
-    {
-        
-    }
+    void Start() {}
 
     void Update()
     {
@@ -43,7 +41,6 @@ public class Default : MonoBehaviour
             UI = GameObject.FindObjectOfType<UI_Manager>();
             UI.EFM_Audio[0] = Player.GetComponent<AudioSource>();
             UI.EFM_Audio[1] = EFM_manager.audioSource;
-
         }
     }
 }
