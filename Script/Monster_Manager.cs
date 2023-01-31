@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// ¸ó½ºÅÍ »ı¼º (ÃÖ´ë3¸¶¸®)
-
+// ëª¬ìŠ¤í„° ìƒì„± (ë§µì— ìµœëŒ€ 3ë§ˆë¦¬)
 
 public class Monster_Manager : MonoBehaviour
 {
@@ -14,13 +13,13 @@ public class Monster_Manager : MonoBehaviour
     private int minItem = 0; 
     private int maxItem = 2; 
     private float betTime; 
-    private float minTime = 10f; // ÃÖ¼Ò ½Ã°£ °£°İ (1ºĞ)
-    private float maxTime = 60f; // ÃÖ´ë ½Ã°£ °£°İ (3ºĞ)
-    private float lastTime; // ¸¶Áö¸· »ı¼º½ÃÁ¡
+    private float minTime = 10f; // ìµœì†Œ ì‹œê°„ ê°„ê²© (1ë¶„)
+    private float maxTime = 60f; // ìµœëŒ€ ì‹œê°„ ê°„ê²© (3ë¶„)
+    private float lastTime; // ë§ˆì§€ë§‰ ìƒì„±ì‹œì 
     public List<GameObject> M_count = new List<GameObject>();
     public float count;
 
-    // ½ºÆ®¸³Æ®
+    // ìŠ¤íŠ¸ë¦½íŠ¸
     public UI_Manager uI_Manager;
 
 
@@ -29,9 +28,7 @@ public class Monster_Manager : MonoBehaviour
         betTime = Random.Range(minTime, maxTime);
         uI_Manager = GameObject.FindObjectOfType<UI_Manager>();
         lastTime = 0;
-        minItem = 0;
-        
-
+        minItem = 0;      
     }
 
     void Update()
@@ -44,8 +41,7 @@ public class Monster_Manager : MonoBehaviour
             betTime = Random.Range(minTime, maxTime);
 
             Spawn(MonsterArea_Pos.transform, 1f);
-        }
-        
+        }        
     }
 
     private void Spawn(Transform floor, float time)
@@ -78,5 +74,4 @@ public class Monster_Manager : MonoBehaviour
 
         yield return new WaitForSeconds(time);
     }
-
 }
