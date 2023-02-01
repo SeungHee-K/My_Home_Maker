@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-// ÇÃ·¹ÀÌ¾î ±âº» Á¤º¸
+// í”Œë ˆì´ì–´ ê¸°ë³¸ ì •ë³´(HP ATK Coin)
+// ì• ë‹ˆë©”ì´ì…˜, ì¹´ë©”ë¼, ì´í™íŠ¸, ì‚¬ìš´ë“œ
+
 public class Player : MonoBehaviour
 {
     public GameObject Player_obj;
@@ -16,15 +18,14 @@ public class Player : MonoBehaviour
     public Vector3 PlayerPos;
     public Animator P_Ani;
     public AudioSource P_Audio;
-    public AudioClip[] P_clip; // °È±â(ÀÜµğ/½Ç³»)/°ø°İ/ÀÌµ¿(¹®¿­±â)/µ¿ÀÛ(¼³Ä¡/¼öÁ¤)
+    public AudioClip[] P_clip; // ê±·ê¸°(ì”ë””/ì‹¤ë‚´)/ê³µê²©/ì´ë™(ë¬¸ì—´ê¸°)/ë™ì‘(ì„¤ì¹˜/ìˆ˜ì •)
     public ParticleSystem[] P_Effect;
     public GameObject P_Cam;
     private bool isDie = false;
 
-
-    // ½ºÅ©¸³Æ®
+    // ìŠ¤í¬ë¦½íŠ¸
     Monster monster;
-    EFM_Manager EFM_manager; // È¿°úÀ½
+    EFM_Manager EFM_manager; // íš¨ê³¼ìŒ
 
 
     void Start()
@@ -43,7 +44,6 @@ public class Player : MonoBehaviour
         {
             P_Effect[i].Stop();
         }
-
     }
 
     void Update()
@@ -65,13 +65,11 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("½ºÀ®!");
+            Debug.Log("ìŠ¤ìœ™!");
 
             P_Ani.SetTrigger("Attack");
-            EFM_manager.audioSource.PlayOneShot(EFM_manager.EFM[0]); // °ø°İ
-           
+            EFM_manager.audioSource.PlayOneShot(EFM_manager.EFM[0]); // ê³µê²©           
         }
-
     }
 
 
@@ -91,9 +89,9 @@ public class Player : MonoBehaviour
     private void P_Attack(float DMG)
     {
         P_Ani.SetTrigger("Attack");
-        EFM_manager.audioSource.PlayOneShot(EFM_manager.EFM[0]); // °ø°İ
+        EFM_manager.audioSource.PlayOneShot(EFM_manager.EFM[0]); // ê³µê²©
 
-        Debug.Log("°ø°İ!");
+        Debug.Log("ê³µê²©!");
 
         monster.HP -= DMG;
 
@@ -105,15 +103,14 @@ public class Player : MonoBehaviour
         isDie = true;
 
         P_Ani.SetTrigger("Dead");
-        P_Effect[1].Play(); // ÇØ°ñ ÀÌÆåÆ®
+        P_Effect[1].Play(); // í•´ê³¨ ì´í™íŠ¸
 
         HP_Panel.SetActive(true);
 
         Invoke("Panel_xx", 1f);
-
     }
 
-    private void Panel_xx() // Á×¾úÀ»¶§ Áı ¾ÈÀ¸·Î ÀÌµ¿, HP 80 È¸º¹
+    private void Panel_xx() // ì£½ì—ˆì„ë•Œ ì§‘ ì•ˆìœ¼ë¡œ ì´ë™, HP 80 íšŒë³µ
     {
         if (HP_Panel == null)
         {
@@ -123,7 +120,7 @@ public class Player : MonoBehaviour
         HP_Panel.SetActive(false);
 
         SceneManager.LoadScene("House");
-        P_Audio.PlayOneShot(P_clip[3]); // ¹® ¼Ò¸®               
+        P_Audio.PlayOneShot(P_clip[3]); // ë¬¸ ì†Œë¦¬               
 
         P_HP = 80;
 
