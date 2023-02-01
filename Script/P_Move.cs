@@ -4,17 +4,18 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
+// í”Œë ˆì´ì–´ ì´ë™(í´ë¦­ì¢Œí‘œ, ì• ë‹ˆë©”ì´ì…˜, ì¹´ë©”ë¼)
+
 public class P_Move : MonoBehaviour
 {
-    private Camera P_Camera; // ÇÃ·¹ÀÌ¾î ¸ÞÀÎÄ«¸Þ¶ó
-    private bool isMove; // ÀÌµ¿ À¯¹«
-    public Vector3 destination; // ÀÌµ¿ÇÒ ÁÂÇ¥
-    private Animator P_Ani; // ¾Ö´Ï¸ÞÀÌ¼Ç
+    private Camera P_Camera; // í”Œë ˆì´ì–´ ë©”ì¸ì¹´ë©”ë¼
+    private bool isMove; // ì´ë™ ìœ ë¬´
+    public Vector3 destination; // ì´ë™í•  ì¢Œí‘œ
+    private Animator P_Ani; // ì• ë‹ˆë©”ì´ì…˜
     private Rigidbody P_Rigid;
-
     public float Speed = 10f;
 
-    // ½ºÅ©¸³Æ®
+    // ìŠ¤í¬ë¦½íŠ¸
     public UI_Manager ui_manager;
     public Player player;
 
@@ -39,9 +40,9 @@ public class P_Move : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Main" || SceneManager.GetActiveScene().name == "House" || SceneManager.GetActiveScene().name == "WareHouse")
         {
-            if (!ui_manager.Mode[0].activeSelf && !ui_manager.Mode[1].activeSelf) // ¼³Ä¡ + ÆíÁý¸ðµå°¡ ¾Æ´Ò¶§ ÇÃ·¹ÀÌ¾î ÀÌµ¿°¡´É
+            if (!ui_manager.Mode[0].activeSelf && !ui_manager.Mode[1].activeSelf) // ì„¤ì¹˜ + íŽ¸ì§‘ëª¨ë“œê°€ ì•„ë‹ë•Œ í”Œë ˆì´ì–´ ì´ë™ê°€ëŠ¥
             {
-                if (Input.GetMouseButton(0) && !isPointerOverUIobj()) // ¸¶¿ì½º ¿ÞÂÊ Å¬¸¯, UIÅ¬¸¯ÀÌ ¾Æ´Ò¶§
+                if (Input.GetMouseButton(0) && !isPointerOverUIobj()) // ë§ˆìš°ìŠ¤ ì™¼ìª½ í´ë¦­, UIí´ë¦­ì´ ì•„ë‹ë•Œ
                 {
                     Ray ray = P_Camera.ScreenPointToRay(Input.mousePosition);
 
@@ -60,7 +61,6 @@ public class P_Move : MonoBehaviour
                 Move();
             }
         }
-
     }
 
 
@@ -69,8 +69,7 @@ public class P_Move : MonoBehaviour
     {
         if (isMove)
         {
-            this.transform.LookAt(destination); // ÇÃ·¹ÀÌ¾î -> ÀÌµ¿ÇÒ ÁÂÇ¥ ¹Ù¶óº¸±â
-
+            this.transform.LookAt(destination); // í”Œë ˆì´ì–´ -> ì´ë™í•  ì¢Œí‘œ ë°”ë¼ë³´ê¸°
 
             if (Vector3.Distance(destination, transform.position) > 0.1f)
             {
@@ -80,11 +79,11 @@ public class P_Move : MonoBehaviour
                 {
                     if (!player.P_Audio.isPlaying)
                     {
-                        player.P_Audio.clip = player.P_clip[0]; // ÀÜµð À§ ¶Ü¹ÚÁú
+                        player.P_Audio.clip = player.P_clip[0]; // ìž”ë”” ìœ„ ëœ€ë°•ì§ˆ
                         player.P_Audio.Play();
                         player.P_Audio.loop = true;
 
-                        Debug.Log("ÀÜµð");
+                        Debug.Log("ìž”ë””");
                     }
                 }
 
@@ -92,11 +91,11 @@ public class P_Move : MonoBehaviour
                 {
                     if (!player.P_Audio.isPlaying)
                     {
-                        player.P_Audio.clip = player.P_clip[1]; // ½Ç³» ¶Ü¹ÚÁú
+                        player.P_Audio.clip = player.P_clip[1]; // ì‹¤ë‚´ ëœ€ë°•ì§ˆ
                         player.P_Audio.Play();
                         player.P_Audio.loop = true;
 
-                        Debug.Log("ÄÜÅ©¸®Æ®");
+                        Debug.Log("ì½˜í¬ë¦¬íŠ¸");
                     }
                 }
 
@@ -129,7 +128,7 @@ public class P_Move : MonoBehaviour
 
     private bool isPointerOverUIobj()
     {
-        // UI Å¬¸¯ ½Ã ´Ù¸¥ Å¬¸¯ÀÌº¥Æ® µ¿ÀÛX
+        // UI í´ë¦­ ì‹œ ë‹¤ë¥¸ í´ë¦­ì´ë²¤íŠ¸ ë™ìž‘X
 
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
 
@@ -142,6 +141,4 @@ public class P_Move : MonoBehaviour
         return results.Count > 0;
 
     }
-
-
 }
