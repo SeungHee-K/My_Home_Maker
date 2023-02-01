@@ -2,25 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// ¾ÆÀÌÅÛ ½Àµæ
-// Æ÷¼Ç(HP, STE)
-// ÄÚÀÎ => ¼³Ä¡¹° ±¸¸Å / Æ÷È­µµ Áõ°¡
+// ì•„ì´í…œ ìŠµë“
+// í¬ì…˜(HP, STE)
+// ì½”ì¸ => ì„¤ì¹˜ë¬¼ êµ¬ë§¤ / í¬í™”ë„ ì¦ê°€
 
 public class P_Item : MonoBehaviour
-{
-    
+{    
    public GameObject XX_item;
-    
- 
-    // ½ºÅ©¸³Æ®
+     
+    // ìŠ¤í¬ë¦½íŠ¸
     public UI_Manager ui_manager;
     public Item_Manager item_manager;
     public Player player;
 
 
-    void Start()
-    {
-    }
+    void Start() {}
 
     void Update()
     {
@@ -33,28 +29,28 @@ public class P_Item : MonoBehaviour
     {
         GameObject item_collision = collision.gameObject;
 
-        if (collision.gameObject.tag == "Coin")
+        if (collision.gameObject.tag == "Coin") // ì½”ì¸ìŠµë“
         {
             ui_manager.Coin_plus();
             item_manager.itemList.Remove(item_collision);
             Destroy(item_collision);
         }
 
-        if (collision.gameObject.tag == "HP")
+        if (collision.gameObject.tag == "HP") // ì²´ë ¥íšŒë³µ
         {
             ui_manager.HP_plus();
             item_manager.itemList.Remove(collision.gameObject);
             Destroy(collision.gameObject);
         }
 
-        if (collision.gameObject.tag == "STE")
+        if (collision.gameObject.tag == "STE") // ìŠ¤íƒœë¯¸ë‚˜íšŒë³µ
         {
             ui_manager.STE_plus();
             item_manager.itemList.Remove(item_collision);
             Destroy(item_collision);
         }
 
-        if (collision.gameObject.tag == "garbage")
+        if (collision.gameObject.tag == "garbage") // ì“°ë ˆê¸° ì¹˜ìš°ê¸°
         {
             ui_manager.Garbage_Panel.SetActive(true);            
             XX_item = item_collision;
@@ -68,5 +64,4 @@ public class P_Item : MonoBehaviour
             ui_manager.Garbage_Panel.SetActive(false);
         }
     }
-
 }
