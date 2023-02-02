@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+// ì”¬ ì „í™˜ ë° ì‚¬ìš´ë“œ ìž¬ìƒ
+// ê²Œìž„ ì¢…ë£Œ
+
 public class SceneChange : MonoBehaviour
 {
     public GameObject Player;
@@ -16,12 +19,12 @@ public class SceneChange : MonoBehaviour
     public bool isMain;
     public bool isWarehouse;
 
-    // ½ºÅ©¸³Æ®
+    // ìŠ¤í¬ë¦½íŠ¸
     public Player player;
     public BGM_Manager BGM_M;
     public EFM_Manager EFM_M;
 
-    public void House() // Áý
+    public void House() // ì§‘
     {
         isScene = true;
 
@@ -29,7 +32,7 @@ public class SceneChange : MonoBehaviour
         SceneTime = 0;        
     }
 
-    public void Main() // ¸¶´ç
+    public void Main() // ë§ˆë‹¹
     {
         isScene = true;
 
@@ -39,7 +42,7 @@ public class SceneChange : MonoBehaviour
         SceneTime = 0;
     }
 
-    public void WareHouse() // Ã¢°í
+    public void WareHouse() // ì°½ê³ 
     {
         isScene = true;
 
@@ -74,7 +77,7 @@ public class SceneChange : MonoBehaviour
         if (SceneTime >= 1.5f && isHouse)
         {
             SceneManager.LoadScene("House");
-            EFM_M.audioSource.PlayOneShot(EFM_M.EFM[1]); // ¹® ¼Ò¸®
+            EFM_M.audioSource.PlayOneShot(EFM_M.EFM[1]); // ë¬¸ ì†Œë¦¬
             Player.transform.position = new Vector3(0, 1, -10);
 
             BGM_M.isAudio = true;
@@ -86,7 +89,7 @@ public class SceneChange : MonoBehaviour
         if (SceneTime >= 1.5f && isMain)
         {
             SceneManager.LoadScene("Main");
-            EFM_M.audioSource.PlayOneShot(EFM_M.EFM[1]); // ¹® ¼Ò¸®
+            EFM_M.audioSource.PlayOneShot(EFM_M.EFM[1]); // ë¬¸ ì†Œë¦¬
             Player.transform.position = new Vector3(0, 3.4f, 0);
 
             BGM_M.isAudio = true;
@@ -98,15 +101,13 @@ public class SceneChange : MonoBehaviour
         if (SceneTime >= 1.5f && isWarehouse)
         {
             SceneManager.LoadScene("WareHouse");
-            EFM_M.audioSource.PlayOneShot(EFM_M.EFM[1]); // ¹® ¼Ò¸®
+            EFM_M.audioSource.PlayOneShot(EFM_M.EFM[1]); // ë¬¸ ì†Œë¦¬
             Player.transform.position = new Vector3(-18, 1, 0);
 
             BGM_M.isAudio = true;
             isScene = false;
             isWarehouse = false;
             SceneTime = 0;
-
-
         }
     }        
 }
