@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using System;
 using System.IO;
 
+// UI ì „ì²´
 
 public class UI_Manager : MonoBehaviour
 {
@@ -19,12 +20,12 @@ public class UI_Manager : MonoBehaviour
 
     public Floor floor;
     public House house;
-    public Slider Saturation; // Æ÷È­µµ
+    public Slider Saturation; // í¬í™”ë„
     public GameObject Saturation_Panel;
 
-    public Slider P_Stemina; // ½ºÅ×¹Ì³ª
-    public Slider P_Hp; // Ã¼·Â
-    public Text Coin; // ÄÚÀÎ
+    public Slider P_Stemina; // ìŠ¤í…Œë¯¸ë‚˜
+    public Slider P_Hp; // ì²´ë ¥
+    public Text Coin; // ì½”ì¸
 
     public GameObject[] Teleport_Panel;
     public GameObject Setting_Panel;
@@ -36,7 +37,7 @@ public class UI_Manager : MonoBehaviour
     public AudioSource BGM_Audio;
     public AudioSource[] EFM_Audio;
 
-    // ½ºÅ©¸³Æ®
+    // ìŠ¤í¬ë¦½íŠ¸
     public Player player;
     public SceneChange scene;
     public SoundSetting SoundSet;
@@ -49,8 +50,7 @@ public class UI_Manager : MonoBehaviour
         player = GameObject.Find("Player").gameObject.GetComponent<Player>();
         scene = GameObject.FindObjectOfType<SceneChange>();
 
-        BGM_Audio = GameObject.Find("SoundManager").gameObject.GetComponent<AudioSource>();
-        
+        BGM_Audio = GameObject.Find("SoundManager").gameObject.GetComponent<AudioSource>();        
     }
 
     void Update()
@@ -71,18 +71,18 @@ public class UI_Manager : MonoBehaviour
         EFM_Audio[1].volume = SoundSet.EFM.value;
         
         
-        if (SceneManager.GetActiveScene().name == "Lobby") // ·ÎºñÀÏ °æ¿ì
+        if (SceneManager.GetActiveScene().name == "Lobby") // ë¡œë¹„ì¼ ê²½ìš°
         {
             FadeInOut();
         }
 
-        if (SceneManager.GetActiveScene().name == "Main") // ¿ÜºÎÀÏ °æ¿ì
+        if (SceneManager.GetActiveScene().name == "Main") // ì™¸ë¶€ì¼ ê²½ìš°
         {
             Saturation.value = floor.Obj_count;
 
             FadeInOut();
 
-            if (Input.GetKeyDown(KeyCode.M)) // 'M' ¹Ì´Ï¸Ê
+            if (Input.GetKeyDown(KeyCode.M)) // 'M' ë¯¸ë‹ˆë§µ
             {
                 if (!MiniMap.activeSelf)
                 {
@@ -95,7 +95,7 @@ public class UI_Manager : MonoBehaviour
             }
         }
 
-        if (SceneManager.GetActiveScene().name == "House") // ½Ç³»ÀÏ °æ¿ì
+        if (SceneManager.GetActiveScene().name == "House") // ì‹¤ë‚´ì¼ ê²½ìš°
         {
             Saturation.value = house.Obj_count;
 
@@ -107,11 +107,9 @@ public class UI_Manager : MonoBehaviour
             Saturation.value = house.Obj_count;
 
             FadeInOut();
-        }
-        
+        }      
 
-
-        if (Saturation.value >= 100) // Æ÷È­µµ 100 ÀÌ»ó ½Ã, ¼³Ä¡ ºÒ°¡
+        if (Saturation.value >= 100) // í¬í™”ë„ 100 ì´ìƒ ì‹œ, ì„¤ì¹˜ ë¶ˆê°€
         {
             Saturation_Panel.SetActive(true);            
         }
@@ -120,8 +118,7 @@ public class UI_Manager : MonoBehaviour
             Saturation_Panel.SetActive(false);
         }
                 
-
-        if (Input.GetKeyDown(KeyCode.Escape)) // 'ESC' ¸ğµç ÆË¾÷Ã¢ ´İ±â
+        if (Input.GetKeyDown(KeyCode.Escape)) // 'ESC' ëª¨ë“  íŒì—…ì°½ ë‹«ê¸°
         {
             if (Btn[0].activeSelf)
             {
@@ -224,36 +221,36 @@ public class UI_Manager : MonoBehaviour
     }
 
     
-    public void STE_plus() // ½ºÅ×¹Ì³ª È¸º¹Æ÷¼Ç
+    public void STE_plus() // ìŠ¤í…Œë¯¸ë‚˜ íšŒë³µí¬ì…˜
     {
         P_Stemina.value += 10;
-        player.P_Effect[0].Play(); // È¸º¹ ÀÌÆåÆ®
-        EFM_manager.audioSource.PlayOneShot(EFM_manager.EFM[4]); // ¾ÆÀÌÅÛ
+        player.P_Effect[0].Play(); // íšŒë³µ ì´í™íŠ¸
+        EFM_manager.audioSource.PlayOneShot(EFM_manager.EFM[4]); // ì•„ì´í…œ
     }
 
-    public void HP_plus() // Ã¼·Â È¸º¹ Æ÷¼Ç
+    public void HP_plus() // ì²´ë ¥ íšŒë³µ í¬ì…˜
     {
         player.P_HP += 10;
         player.P_Effect[0].Play();
-        EFM_manager.audioSource.PlayOneShot(EFM_manager.EFM[4]); // ¾ÆÀÌÅÛ
+        EFM_manager.audioSource.PlayOneShot(EFM_manager.EFM[4]); // ì•„ì´í…œ
     }
 
-    public void Coin_plus() // ÄÚÀÎ ½Àµæ
+    public void Coin_plus() // ì½”ì¸ ìŠµë“
     {
         player.Coin += 100;
         player.P_Effect[0].Play();
-        EFM_manager.audioSource.PlayOneShot(EFM_manager.EFM[4]); // ¾ÆÀÌÅÛ
+        EFM_manager.audioSource.PlayOneShot(EFM_manager.EFM[4]); // ì•„ì´í…œ
     }
 
     public void FadeInOut()
     {
         if (Black.activeSelf && BlackImg.color.a <= 0 && scene.isScene)
         {
-            StartCoroutine("FadeOut", 0.5f); // ÆäÀÌµå¾Æ¿ô
+            StartCoroutine("FadeOut", 0.5f); // í˜ì´ë“œì•„ì›ƒ
         }
         if (Black.activeSelf && BlackImg.color.a >= 1 && !scene.isScene)
         {
-            StartCoroutine("FadeIn", 0.5f); // ÆäÀÌµåÀÎ
+            StartCoroutine("FadeIn", 0.5f); // í˜ì´ë“œì¸
         }
     }
 
@@ -280,10 +277,6 @@ public class UI_Manager : MonoBehaviour
 
             yield return new WaitForSeconds(0.02f);
             BlackImg.color = new Color(0, 0, 0, Fade);
-
         }
     }
-
-
-
 }
