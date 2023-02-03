@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// â�� �̵�
+// 텔레포트
+// 창고 안
 
 public class Teleport_WareHouse : MonoBehaviour
 {
@@ -14,10 +15,7 @@ public class Teleport_WareHouse : MonoBehaviour
         ui_manager = FindObjectOfType<UI_Manager>();
     }
 
-    void Update()
-    {
-
-    }
+    void Update() {}
 
     public void OnCollisionEnter(Collision collision)
     {
@@ -34,7 +32,4 @@ public class Teleport_WareHouse : MonoBehaviour
             ui_manager.Teleport_Panel[1].SetActive(false);
         }
     }
-
-
-
 }
