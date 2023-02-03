@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// BGM - ¹è°æÀ½¾Ç Slider
-// EFM - È¿°úÀ½ Slider
+// BGM - ë°°ê²½ìŒì•… Slider
+// EFM - ì´í™íŠ¸ ì‚¬ìš´ë“œ Slider
 
 public class SoundSetting : MonoBehaviour
 {
