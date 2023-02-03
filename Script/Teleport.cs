@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 마당 -> 집 안/창고 안
+// 집 안/창고 안 -> 마당
+// 씬 전환 텔레포트 기능 및 팝업창(UI)
+
 public class Teleport : MonoBehaviour
 {
-
-    // ��ũ��Ʈ
+    // 스크립트
     public UI_Manager ui_manager;
 
 
@@ -19,7 +22,6 @@ public class Teleport : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             ui_manager.Teleport_Panel[0].SetActive(true);
-
         }
     }
 
@@ -28,16 +30,8 @@ public class Teleport : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             ui_manager.Teleport_Panel[0].SetActive(false);
-
         }
     }
 
-    void Update()
-    {
-               
-
-        
-
-
-    }
+    void Update() { }
 }
